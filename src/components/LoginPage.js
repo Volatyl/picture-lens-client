@@ -8,12 +8,12 @@ const LoginPage = () => {
     event.preventDefault();
     // Perform validation and login logic using fetch
     // Replace the dummy URL with your actual API endpoint for user login
-    fetch('https://api.example.com/login', {
+    fetch('http://127.0.0.1:5555/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify({ email, password })
     })
       .then((response) => response.json())
       .then((data) => {

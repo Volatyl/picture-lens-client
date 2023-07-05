@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const JoinPage = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Perform validation and registration logic using fetch
     // Replace the dummy URL with your actual API endpoint for user registration
-    fetch('https://api.example.com/register', {
-      method: 'POST',
-      body: JSON.stringify({ username, email, password }),
+    fetch("http://127.0.0.1:5555/signup", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, email, password }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -27,9 +27,9 @@ const JoinPage = () => {
       });
 
     // Reset the form fields
-    setUsername('');
-    setEmail('');
-    setPassword('');
+    setUsername("");
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -73,16 +73,24 @@ const JoinPage = () => {
             />
           </div>
         </div>
-        <button type="submit" className="join-button">Join</button>
+        <button type="submit" className="join-button">
+          Join
+        </button>
       </form>
       <div className="join-social-login">
         <p>Continue with:</p>
-        <button className="join-social-login-button">Continue with Google</button>
-        <button className="join-social-login-button">Continue with Facebook</button>
+        <button className="join-social-login-button">
+          Continue with Google
+        </button>
+        <button className="join-social-login-button">
+          Continue with Facebook
+        </button>
       </div>
       <p>or</p>
       <div className="join-login">
-        <p>Already have an account? <a href="/login">Log in</a></p>
+        <p>
+          Already have an account? <a href="/login">Log in</a>
+        </p>
       </div>
     </div>
   );
