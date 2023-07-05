@@ -24,6 +24,16 @@
   margin-right: 0;
 }
 
+
+
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+}
+
 /* Header Links */
 .header-menu-item a {
   color: #333333;
@@ -60,3 +70,173 @@
   background-color: #007bff;
   color: #fff;
 }
+
+/*login,singup */
+.login-page,
+.join-page {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.login-form-group,
+.join-form-group {
+  margin-bottom: 15px;
+}
+
+.login-input,
+.join-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-button,
+.join-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-options,
+.join-social-login {
+  margin-top: 15px;
+}
+
+.login-option-button,
+.join-social-login-button {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #3b5998;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-login,
+.join-login {
+  margin-top: 15px;
+}
+
+/* footer */
+.footer {
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 0 0 33.33%;
+  margin-bottom: 20px;
+}
+
+.footer h4 {
+  margin-top: 0;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer ul li {
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+  color: #999;
+}
+/* uploadpage*/
+.upload-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+}
+
+.upload-page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.upload-page ul {
+  text-align: left;
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.upload-input {
+  margin-top: 20px;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.upload-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.upload-button:hover {
+  background-color: #45a049;
+}
+
+.upload-page p:last-child {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #888;
+}
+
+/* App.css */
+
+.app {
+  transition: padding-top 0.3s;
+}
+
+.fixed-header .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.fixed-header .app {
+  padding-top: 80px; /* Adjust this value to match your header height */
+}
+
+/* Other styles for your components */
