@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import SearchForm from './components/SearchForm';
+import ImageList from './components/ImageList';
+import ImageItem from './components/ImageItem';
+import Pagination from './components/Pagination';
+import Footer from './components/Footer';
+import JoinPage from './components/JoinPage';
+import LoginPage from './components/LoginPage';
+import UploadPage from './components/UploadPage';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+        
+        <Routes>
+        
+          <Route path="/" element={
+            <>
+              <SearchForm />
+              <ImageList>
+                <ImageItem />
+              </ImageList>
+              <Pagination />
+            </>
+          } />
+          <Route path="/join" element={<JoinPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/upload" element={<UploadPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
