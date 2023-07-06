@@ -31,12 +31,32 @@ body {
 
 
 
+/* Add the following styles to your existing CSS file */
+
 .header-title {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
   color: #fff;
   margin: 0;
+  animation: titleAnimation 2s infinite alternate;
 }
+
+.header-title-lens {
+  font-weight: bold;
+}
+
+@keyframes titleAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
 /* Header Links */
 .header-menu-item a {
@@ -177,53 +197,59 @@ body {
 }
 /* uploadpage*/
 .upload-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100vh;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .upload-page h2 {
-  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.upload-page label {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+  font-weight: bold;
+}
+
+.upload-page input,
+.upload-page select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   margin-bottom: 20px;
 }
 
-.upload-page ul {
-  text-align: left;
-  list-style-type: disc;
-  margin-left: 20px;
-}
-
-.upload-input {
-  margin-top: 20px;
-  width: 300px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.upload-page select[multiple] {
+  height: 80px;
 }
 
 .upload-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #4CAF50;
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .upload-button:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
 }
 
-.upload-page p:last-child {
-  margin-top: 20px;
-  font-weight: bold;
-  color: #888;
-}
+
+
 
 /* App.css */
 
@@ -266,12 +292,86 @@ body {
 
 .edit-page h2 {
   margin-bottom: 20px;
+  color: #333;
 }
+
 .edit-page img {
   max-width: 50%;
   height: auto;
   margin-bottom: 20px;
 }
+
+.image-details {
+  margin-bottom: 20px;
+}
+
+.image-details h3 {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.image-details p {
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.actions {
+  margin-bottom: 20px;
+}
+
+.actions button {
+  padding: 10px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.actions button:hover {
+  background-color: #0056b3;
+}
+
+.comments {
+  margin-top: 20px;
+}
+
+.comments h3 {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.comments form {
+  margin-top: 10px;
+}
+
+.comments textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.comments button[type="submit"] {
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.comments button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
 
 .liked {
   color: red;
@@ -289,6 +389,8 @@ body {
 .comments {
   margin-top: 20px;
 }
+
+
 
 
 

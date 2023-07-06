@@ -45,7 +45,7 @@ const EditPage = () => {
     try {
       // Prepare the comment data
       const commentData = {
-        comment: imageData.commentText, // Assuming `imageData` has a `commentText` property
+        comment: commentText, // Use the commentText state value
         user_id: 'user_id_goes_here', // Replace with the actual user ID
         image_id: imageData.id, // Assuming `imageData` has an `id` property
       };

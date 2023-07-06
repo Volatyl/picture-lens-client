@@ -50,6 +50,16 @@ const UploadPage = () => {
     setSelectedCategories([]);
   };
 
+  // Define the categories array based on the provided list
+  const categories = [
+    'Nature',
+    'Water',
+    'Land',
+    'Cars',
+    'Abstract',
+    'Sunset'
+  ];
+
   return (
     <div className="upload-page">
       <h2>Upload Page</h2>
@@ -77,9 +87,11 @@ const UploadPage = () => {
           value={selectedCategories}
           onChange={handleCategoryChange}
         >
-          <option value="category1">Category 1</option>
-          <option value="category2">Category 2</option>
-          {/* Add other category options dynamically */}
+          {categories.map((category) => (
+            <option key={category} value={category.toLowerCase()}>
+              {category}
+            </option>
+          ))}
         </select>
         <button onClick={handleUpload} className="upload-button">Upload</button>
       </div>
