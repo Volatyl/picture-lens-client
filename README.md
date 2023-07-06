@@ -1,5 +1,5 @@
 PICTURE LENS
-#Contributors-Kennedy , Patricia, Byron, Lionel 
+#Contributors- Kennedy , Patricia, Byron, Lionel 
 
 Picture Lens - HD Wallpaper Platform
 
