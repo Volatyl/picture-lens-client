@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
 
 const ImageItem = () => {
   const [images, setImages] = useState([]);
@@ -18,10 +18,20 @@ const ImageItem = () => {
     fetchImages();
   }, []);
 
+  const handleLike = (imageId) => {
+    // Logic for handling the like action
+    console.log('Liked image:', imageId);
+  };
+
   return (
     <div className="image-item-container"> {/* Add a container div */}
       {images.map((image, index) => (
-        <img key={index} src={image.url} alt={`Image ${index + 1}`} />
+        <div key={index} className="image-item">
+          <Link to={`/edit/${image.id}`}>
+            <img src={image.url} alt={`Image ${index + 1}`} />
+          </Link>
+          <button onClick={() => handleLike(image.id)}>Like</button>
+        </div>
       ))}
     </div>
   );
