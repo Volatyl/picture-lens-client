@@ -239,4 +239,19 @@
   padding-top: 80px; /* Adjust this value to match your header height */
 }
 
-/* Other styles for your components */
+.image-item-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Adjust the grid columns to desired size */
+  gap: 20px; /* Add spacing between grid items */
+  justify-items: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+}
+
+.image-item-container img {
+  width: 100%; /* Set the width of images to 100% of their container */
+  height: auto; /* Preserve the aspect ratio of images */
+}
+
+
+
+

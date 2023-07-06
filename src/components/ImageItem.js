@@ -1,16 +1,5 @@
-// import React from 'react';
-
-// const ImageItem = () => {
-//   return (
-//     <div className="image-item">
-//       {/* Your image item code goes here */}
-//     </div>
-//   );
-// };
-
-// export default ImageItem;
-
 import React, { useEffect, useState } from 'react';
+
 
 const ImageItem = () => {
   const [images, setImages] = useState([]);
@@ -30,7 +19,7 @@ const ImageItem = () => {
   }, []);
 
   return (
-    <div>
+    <div className="image-item-container"> {/* Add a container div */}
       {images.map((image, index) => (
         <img key={index} src={image.url} alt={`Image ${index + 1}`} />
       ))}
