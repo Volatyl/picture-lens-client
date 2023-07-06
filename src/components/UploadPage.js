@@ -1,51 +1,87 @@
 import React, { useState } from 'react';
 
 const UploadPage = () => {
-  const [selectedFiles, setSelectedFiles] = useState([]);
-  const [remainingUploads, setRemainingUploads] = useState(7);
+  const [imageUrl, setImageUrl] = useState('');
+  const [price, setPrice] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
-  const handleFileSelect = (event) => {
-    const files = Array.from(event.target.files);
-    setSelectedFiles(files);
+  const handleImageUrlChange = (event) => {
+    setImageUrl(event.target.value);
+  };
+
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
+  };
+
+  const handleCategoryChange = (event) => {
+    const selectedOptions = Array.from(event.target.selectedOptions, (option) => option.value);
+    setSelectedCategories(selectedOptions);
   };
 
   const handleUpload = () => {
-    // Perform file upload logic using fetch
-    // Replace the dummy URL with your actual API endpoint for file upload
-    fetch('https://api.example.com/upload', {
+    const image = {
+      url: imageUrl,
+      price: parseInt(price),
+      categories: selectedCategories
+    };
+
+    // Perform image upload logic using fetch
+    // Replace the dummy URL with your actual API endpoint for image upload
+    fetch('http://127.0.0.1:5555/add_image', {
       method: 'POST',
-      body: selectedFiles,
       headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(image)
     })
       .then((response) => response.json())
       .then((data) => {
         // Handle the response data
         console.log(data);
-        setRemainingUploads(remainingUploads - 1);
       })
       .catch((error) => {
         // Handle any errors
         console.error(error);
       });
+
+    // Reset the form fields
+    setImageUrl('');
+    setPrice('');
+    setSelectedCategories([]);
   };
 
   return (
     <div className="upload-page">
       <h2>Upload Page</h2>
       <div>
-        <p>Supported file types:</p>
-        <ul>
-          <li>Photos/Vectors: JPG, PNG, PSD, AI, and SVG images up to 40 MB with at least 3000 pixels along one side.</li>
-          <li>Videos: MPEG, MOV, and AVI videos up to 300 MB and a minimum resolution of 1920x800 pixels. Clips should be no longer than 60 seconds.</li>
-          <li>Music: MP3, WAV, AAC, FLAC, AIF, and M4A music up to 100MB file size limit. Duration should be no longer than 15 minutes.</li>
-        </ul>
-        <p>Drag and drop media files anywhere on the page</p>
-        <p>{remainingUploads} uploads remaining this week. Learn more...</p>
-        <input type="file" multiple onChange={handleFileSelect} className="upload-input" />
+        <label htmlFor="imageUrl">Image URL</label>
+        <input
+          type="text"
+          id="imageUrl"
+          value={imageUrl}
+          onChange={handleImageUrlChange}
+          required
+        />
+        <label htmlFor="price">Price</label>
+        <input
+          type="number"
+          id="price"
+          value={price}
+          onChange={handlePriceChange}
+          required
+        />
+        <label htmlFor="categories">Categories</label>
+        <select
+          multiple
+          id="categories"
+          value={selectedCategories}
+          onChange={handleCategoryChange}
+        >
+          <option value="category1">Category 1</option>
+          <option value="category2">Category 2</option>
+          {/* Add other category options dynamically */}
+        </select>
         <button onClick={handleUpload} className="upload-button">Upload</button>
-        <p>Media in high demand</p>
       </div>
     </div>
   );
