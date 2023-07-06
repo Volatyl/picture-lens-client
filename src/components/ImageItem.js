@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
 
 const ImageItem = () => {
   const [images, setImages] = useState([]);
@@ -30,7 +33,9 @@ const ImageItem = () => {
           <Link to={`/edit/${image.id}`}>
             <img src={image.url} alt={`Image ${index + 1}`} />
           </Link>
-          <button onClick={() => handleLike(image.id)}>Like</button>
+          <button onClick={() => handleLike(image.id)}>
+            <i className="fa fa-heart" aria-hidden="true">Like</i> 
+          </button>
         </div>
       ))}
     </div>

@@ -1,4 +1,8 @@
 /* Header Container */
+body {
+  margin: 0;
+  padding: 0;
+}
 .header {
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG7AnANlVU0K1i7S-pncwljO2NMBPU_qrwOg&usqp=CAU);
   background-size: cover;
@@ -250,6 +254,35 @@
 .image-item-container img {
   width: 100%; /* Set the width of images to 100% of their container */
   height: auto; /* Preserve the aspect ratio of images */
+}
+
+
+.edit-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.edit-page h2 {
+  margin-bottom: 20px;
+}
+.edit-page img {
+  max-width: 50%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.image-details {
+  margin-bottom: 20px;
+}
+
+.actions button {
+  margin-right: 10px;
+}
+
+.comments {
+  margin-top: 20px;
 }
 
 

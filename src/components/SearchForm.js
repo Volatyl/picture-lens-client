@@ -9,9 +9,22 @@ const SearchForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Perform search functionality or any other action with the search term
-    console.log('Search term:', searchTerm);
+    search(searchTerm);
     setSearchTerm('');
+  };
+
+  const search = (term) => {
+    // Perform the actual search logic here
+    fetch(`http://example.com/images?search=${term}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response data
+        console.log(data);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
   };
 
   return (

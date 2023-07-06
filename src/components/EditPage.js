@@ -19,16 +19,57 @@ const EditPage = () => {
     fetchImageData();
   }, [id]);
 
-  const handleDownload = () => {
-    // Placeholder logic for downloading the image
-    console.log('Download image:', imageData);
+  const handleDownload = async () => {
+    try {
+      const response = await fetch(imageData.url);
+      const blob = await response.blob();
+  
+      // Create a temporary URL for the blob
+      const url = URL.createObjectURL(blob);
+  
+      // Create a download link and simulate a click event
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = imageData.title; // Set the desired filename for the downloaded image
+      link.click();
+  
+      // Clean up the temporary URL
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading the image:', error);
+    }
   };
+  
 
-  const handleComment = () => {
-    // Placeholder logic for adding comments
-    console.log('Add comment:', imageData);
+  const handleComment = async () => {
+    try {
+      // Prepare the comment data
+      const commentData = {
+        imageId: imageData.id, // Assuming `imageData` has an `id` property
+        text: 'Your comment text goes here', // Replace with the actual comment text
+      };
+  
+      // Send a POST request to the /comment endpoint
+      const response = await fetch('http://127.0.0.1:5555/comment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(commentData),
+      });
+  
+      // Check if the comment was successfully added
+      if (response.ok) {
+        console.log('Comment added successfully');
+        
+      } else {
+        console.error('Failed to add comment');
+      }
+    } catch (error) {
+      console.error('Error adding comment:', error);
+    }
   };
-
+  
   const handleEdit = () => {
     // Placeholder logic for editing the image
     console.log('Edit image:', imageData);
