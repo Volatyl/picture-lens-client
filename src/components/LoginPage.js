@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setError(null);
+
     // Perform validation and login logic using fetch
     // Replace the dummy URL with your actual API endpoint for user login
     fetch('http://127.0.0.1:5555/login', {
@@ -19,10 +24,18 @@ const LoginPage = () => {
       .then((data) => {
         // Handle the response data
         console.log(data);
+        // Check for errors in the response
+        if (data.error) {
+          setError(data.error);
+        } else {
+          // Redirect to the home page after successful login
+          navigate('/'); // Replace '/' with the appropriate route for the home page
+        }
       })
       .catch((error) => {
         // Handle any errors
         console.error(error);
+        setError('An error occurred during login.');
       });
 
     // Reset the form fields
@@ -32,7 +45,8 @@ const LoginPage = () => {
 
   return (
     <div className="login-page">
-      <h2>Sign up to download unlimited full resolution media</h2>
+      <h2>Sign up to download unlimited full-resolution media</h2>
+      {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="login-form">
           <div className="login-form-group">
