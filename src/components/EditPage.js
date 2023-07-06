@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 const EditPage = () => {
   const { id } = useParams();
   const [imageData, setImageData] = useState(null);
+  const [commentText, setCommentText] = useState('');
 
   useEffect(() => {
     const fetchImageData = async () => {
@@ -39,14 +40,14 @@ const EditPage = () => {
       console.error('Error downloading the image:', error);
     }
   };
-  
 
   const handleComment = async () => {
     try {
       // Prepare the comment data
       const commentData = {
-        imageId: imageData.id, // Assuming `imageData` has an `id` property
-        text: 'Your comment text goes here', // Replace with the actual comment text
+        comment: imageData.commentText, // Assuming `imageData` has a `commentText` property
+        user_id: 'user_id_goes_here', // Replace with the actual user ID
+        image_id: imageData.id, // Assuming `imageData` has an `id` property
       };
   
       // Send a POST request to the /comment endpoint
@@ -61,7 +62,7 @@ const EditPage = () => {
       // Check if the comment was successfully added
       if (response.ok) {
         console.log('Comment added successfully');
-        
+        // You can perform additional actions here, such as refreshing the comments list or clearing the comment input
       } else {
         console.error('Failed to add comment');
       }
@@ -71,8 +72,7 @@ const EditPage = () => {
   };
   
   const handleEdit = () => {
-    // Placeholder logic for editing the image
-    console.log('Edit image:', imageData);
+    // ... (existing code for editing the image)
   };
 
   if (!imageData) {
@@ -92,7 +92,6 @@ const EditPage = () => {
 
       <div className="actions">
         <button onClick={handleDownload}>Download</button>
-        <button onClick={handleComment}>Comment</button>
         <button onClick={handleEdit}>Edit</button>
       </div>
 
@@ -102,6 +101,16 @@ const EditPage = () => {
         {/* {imageData.comments.map((comment) => (
           <div key={comment.id}>{comment.text}</div>
         ))} */}
+
+        {/* Comment form */}
+        <form onSubmit={handleComment}>
+          <textarea
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+            placeholder="Write your comment..."
+          />
+          <button type="submit">Comment</button>
+        </form>
       </div>
     </div>
   );

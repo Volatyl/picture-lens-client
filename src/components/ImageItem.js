@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-
-const ImageItem = () => {
+const ImageList = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
@@ -24,17 +23,30 @@ const ImageItem = () => {
   const handleLike = (imageId) => {
     // Logic for handling the like action
     console.log('Liked image:', imageId);
+    // Update the images state to reflect the liked image
+    setImages((prevImages) => {
+      return prevImages.map((image) => {
+        if (image.id === imageId) {
+          return { ...image, liked: !image.liked };
+        }
+        return image;
+      });
+    });
   };
 
   return (
-    <div className="image-item-container"> {/* Add a container div */}
+    <div className="image-item-container">
       {images.map((image, index) => (
         <div key={index} className="image-item">
           <Link to={`/edit/${image.id}`}>
             <img src={image.url} alt={`Image ${index + 1}`} />
           </Link>
-          <button onClick={() => handleLike(image.id)}>
-            <i className="fa fa-heart" aria-hidden="true">Like</i> 
+          <button
+            onClick={() => handleLike(image.id)}
+            className={image.liked ? 'liked' : ''}
+          >
+            <FontAwesomeIcon icon={faHeart} />
+            Like
           </button>
         </div>
       ))}
@@ -42,4 +54,4 @@ const ImageItem = () => {
   );
 };
 
-export default ImageItem;
+export default ImageList;

@@ -273,6 +273,11 @@ body {
   margin-bottom: 20px;
 }
 
+.liked {
+  color: red;
+}
+
+
 .image-details {
   margin-bottom: 20px;
 }
