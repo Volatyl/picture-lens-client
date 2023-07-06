@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const JoinPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,6 +22,8 @@ const JoinPage = () => {
       .then((data) => {
         // Handle the response data
         console.log(data);
+        // Redirect to the home page after successful registration
+        navigate("/"); // Replace "/" with the appropriate route for the home page
       })
       .catch((error) => {
         // Handle any errors
@@ -30,6 +34,12 @@ const JoinPage = () => {
     setUsername("");
     setEmail("");
     setPassword("");
+  };
+
+  const handleLogout = () => {
+    // Perform logout logic
+    // Redirect to the home page or login page after logout
+    navigate("/"); // Replace "/" with the appropriate route
   };
 
   return (
@@ -91,6 +101,7 @@ const JoinPage = () => {
         <p>
           Already have an account? <a href="/login">Log in</a>
         </p>
+        <button onClick={handleLogout}>Logout</button> {/* Add the logout button */}
       </div>
     </div>
   );
