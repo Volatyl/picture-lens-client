@@ -390,6 +390,47 @@ body {
   margin-top: 20px;
 }
 
+/* hero*/
+.hero {
+  /* Styles for the outer hero container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* Add margin bottom to create space */
+}
+
+.hero-content {
+  /* Styles for the content container */
+  text-align: center;
+}
+
+.hero-title {
+  /* Styles for the hero title */
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  /* Styles for the hero subtitle */
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.hero-button {
+  /* Styles for the hero button */
+  background-color: #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #ccc;
+}
+
 
 
 
