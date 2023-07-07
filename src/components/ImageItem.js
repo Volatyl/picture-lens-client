@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 
+
 const ImageList = () => {
   const [images, setImages] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -66,22 +67,23 @@ const ImageList = () => {
   };
 
   return (
-    <div className="image-item-container">
+    <div className="image-list-container">
       {(searchResults.length > 0 ? searchResults : images).map((image, index) => (
         <div key={index} className="image-item">
-          <Link to={`/edit/${image.id}`}>
-            <img src={image.url} alt={`Image ${index + 1}`} />
-          </Link>
-          <button
-            onClick={() => handleLike(image.id)}
-            className={image.liked ? 'liked' : ''}
-          >
-            <FontAwesomeIcon icon={faHeart} />
-            Like
-          </button>
-          <button onClick={() => handleDelete(image.id)}>
-            <FontAwesomeIcon icon={faTrash} />
-          </button>
+          <div className="image-card">
+            <Link to={`/edit/${image.id}`}>
+              <img src={image.url} alt={`Image ${index + 1}`} className="image-item-img" />
+            </Link>
+            <div className="button-container">
+              <button onClick={() => handleLike(image.id)} className={image.liked ? 'liked' : ''}>
+                <FontAwesomeIcon icon={faHeart} />
+                Like
+              </button>
+              <button onClick={() => handleDelete(image.id)}>
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
+            </div>
+          </div>
         </div>
       ))}
     </div>

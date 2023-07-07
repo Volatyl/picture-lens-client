@@ -433,6 +433,43 @@ body {
 
 
 
+.image-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.image-item {
+  width: calc(33.33% - 20px); /* Three items per row with some spacing between them */
+  margin: 10px;
+  display: flex;
+  align-items: stretch; /* Ensure all items have equal height */
+}
+
+.image-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.liked {
+  color: red;
+}
 
 
 
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
